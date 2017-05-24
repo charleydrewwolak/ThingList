@@ -6,6 +6,7 @@ import ThingList from './ThingList'
 import ThingSubmit from './ThingSubmit'
 
 class App extends Component {
+
   state = {
     things: {
       'thing-1': { id: 'thing-1', name: 'Milk' },
@@ -13,12 +14,21 @@ class App extends Component {
       'thing-3': { id: 'thing-3', name: 'Bibb lettuce' },
     }
   }
+  addThing = () => {
+    const things = {...this.state.things} 
+    const thing = {
+      id: `thing-${Date.now()}`,
+      name: '',
+    }
+    things[thing.id] = thing
+    this.setState({ things })
+  }
 
   render() {
     return (
       <div className="App">
         <Header />
-        <ThingSubmit />
+        <ThingSubmit  addThing={this.addThing}/>
         <ThingList things={this.state.things} />
       </div>
     );
