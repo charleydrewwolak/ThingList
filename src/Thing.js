@@ -1,6 +1,6 @@
 import React from 'react'
 import ContentEditable from 'react-contenteditable'
-
+import Actions from './Actions'
 import './Thing.css'
 
 const Thing = ({ thing, saveThing, removeThing }) => {
@@ -18,14 +18,7 @@ const Thing = ({ thing, saveThing, removeThing }) => {
           html={thing.name}
           onChange={updateName}
         />
-        <span className="actions">
-          <button 
-          className="remove" 
-          onClick={() => removeThing(thing)}
-          >
-            <i className="fa fa-trash-o"></i>
-          </button>
-        </span>
+        <Actions removeThing={removeThing} thing={thing} />
       </div>
     </li>
   )
