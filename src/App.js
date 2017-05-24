@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import base from './base'
+
 import './App.css';
 import Header from './Header'
 import ThingList from './ThingList'
 import ThingSubmit from './ThingSubmit'
+import base from './base'
 
 class App extends Component {
   componentWillMount() {
     base.syncState(
-      'things', 
-    {
-      context: this,
-      state: 'things',
-    })
+      'things',
+      {
+        context: this,
+        state: 'things'
+      }
+    )
   }
 
   state = {
@@ -35,15 +37,14 @@ class App extends Component {
 
   saveThing = (thing) => {
     const things = {...this.state.things}
-    things[thing.id] = null
+    things[thing.id] = thing
     this.setState({ things })
   }
 
   removeThing = (thing) => {
-        const things = {...this.state.things}
-        delete things[thing.id]
-        this.setState({ things })
-
+    const things = {...this.state.things}
+    things[thing.id] = null
+    this.setState({ things })
   }
 
   render() {
