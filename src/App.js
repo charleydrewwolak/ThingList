@@ -6,20 +6,26 @@ import ThingList from './ThingList'
 import ThingSubmit from './ThingSubmit'
 
 class App extends Component {
-
   state = {
-    things: {
-      'thing-1': { id: 'thing-1', name: 'Milk' },
-      'thing-2': { id: 'thing-2', name: 'Bread' },
-      'thing-3': { id: 'thing-3', name: 'Bibb lettuce' },
-    }
+    things: {},
   }
-  addThing = () => {
-    const things = {...this.state.things} 
-    const thing = {
+
+  thing() {
+    return {
       id: `thing-${Date.now()}`,
       name: '',
     }
+  }
+
+  addThing = () => {
+    const things = {...this.state.things}
+    const thing = this.thing()
+    things[thing.id] = thing
+    this.setState({ things })
+  }
+
+  saveThing = (thing) => {
+    const things = {...this.state.things}
     things[thing.id] = thing
     this.setState({ things })
   }
@@ -28,8 +34,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <ThingSubmit  addThing={this.addThing}/>
-        <ThingList things={this.state.things} />
+        <ThingSubmit addThing={this.addThing} />
+        <ThingList
+          things={this.state.things}
+          saveThing={this.saveThing}
+        />
       </div>
     );
   }
