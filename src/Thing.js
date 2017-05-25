@@ -40,6 +40,7 @@ class Thing extends Component {
     const { thing, removeThing } = this.props
 
     return (
+      
       <li className="Thing">
         <input 
           type="checkbox" 
@@ -60,7 +61,9 @@ class Thing extends Component {
               onChange={this.dueDate}
           />
         </div>
-        <Actions thing={thing} removeThing={removeThing} />
+        <div className="delete">
+          <Actions thing={thing} removeThing={removeThing} />
+        </div>
       </li>
     )
   }

@@ -5,6 +5,8 @@ import Header from './Header'
 import ThingList from './ThingList'
 import ThingSubmit from './ThingSubmit'
 import base from './base'
+import SignOut from './SignOut'
+import SignIn from './SignIn'
 
 class App extends Component {
   componentWillMount() {
@@ -25,6 +27,8 @@ class App extends Component {
     return {
       id: `thing-${Date.now()}`,
       name: '',
+      completed: false,
+      due: 'null'
     }
   }
 
@@ -56,6 +60,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <SignIn />
+        <SignOut />
         <ThingSubmit addThing={this.addThing} />
         <ThingList
           things={this.state.things}
