@@ -1,11 +1,23 @@
 import React from 'react'
+
+import { auth, githubProvider } from './base'
+
 import './SignIn.css'
 
-const SignIn = () => {
-    return <button className="SignIn">
-                Sign in with Github 
-            </button>
+const SignIn = ({ authHandler }) => {
+  const authenticate = (provider) => {
+    auth
+      .signInWithPopup(provider)
+  }
 
+  return (
+    <button
+      className="SignIn"
+      onClick={() => authenticate(githubProvider)}
+    >
+      Sign In With GitHub
+    </button>
+  )
 }
 
-export default SignIn 
+export default SignIn
