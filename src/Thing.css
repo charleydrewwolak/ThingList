@@ -48,6 +48,7 @@ input[type="checkbox"] {
 
 
 .Thing input[type=date] {
+  font-family: 'helvetica neue', sans-serif;
   height: 100%;
   width: 70%;
   font-size: 12px;
@@ -55,7 +56,8 @@ input[type="checkbox"] {
   border: 1px black;
   border-radius: 0px;
   padding: 0 3px;
-  float: right;
+  float: left;
+  font-weight: bold;
 
 
 } 
@@ -69,3 +71,4 @@ input[type="checkbox"] {
 .Thing .details {
   display: block;
 }
+
