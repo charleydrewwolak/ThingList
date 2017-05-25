@@ -45,3 +45,27 @@ input[type="checkbox"] {
       flex: 1 1 0%;
 }
 
+
+
+.Thing input[type=date] {
+  height: 100%;
+  width: 70%;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: 1px black;
+  border-radius: 0px;
+  padding: 0 3px;
+  float: right;
+
+
+} 
+
+.Thing input[type=date]:before {
+  content: "Due:  ";
+}
+  
+
+
+.Thing .details {
+  display: block;
+}

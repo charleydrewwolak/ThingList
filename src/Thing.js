@@ -22,12 +22,30 @@ class Thing extends Component {
     }
   }
 
+  isCompleted = (ev) => {
+    const { thing, saveThing } = this.props
+    thing.completed = ev.target.checked
+    saveThing(thing)
+
+  }
+  dueDate = (ev) => {
+    const { thing, saveThing } = this.props
+    thing.due = ev.target.value
+    saveThing(thing)
+  }
+
+ 
+
   render() {
     const { thing, removeThing } = this.props
 
     return (
       <li className="Thing">
-        <input type="checkbox" value="on" />
+        <input 
+          type="checkbox" 
+          checked={thing.completed}
+          onChange={this.isCompleted}
+          />
         <div className="details">
           <ContentEditable
             className="name"
@@ -35,12 +53,18 @@ class Thing extends Component {
             onChange={this.updateName}
             onKeyPress={this.blurOnEnter}
             ref={input => this.nameInput = input}
+          />  
+          <input 
+              type="date" 
+              value={thing.due}
+              onChange={this.dueDate}
           />
-          <Actions thing={thing} removeThing={removeThing} />
         </div>
+        <Actions thing={thing} removeThing={removeThing} />
       </li>
     )
   }
 }
+
 
 export default Thing
