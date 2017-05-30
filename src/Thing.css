@@ -12,7 +12,12 @@
   border-bottom: none;
 }
 
-input:checked + .details {
+input:checked + .details  {
+  background:#F9F9F9;
+  text-decoration: line-through;
+}
+
+input:checked + .details + .delete {
   background:#F9F9F9;
   text-decoration: line-through;
 }
